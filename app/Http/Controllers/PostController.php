@@ -11,7 +11,8 @@ class PostController extends Controller
     public function alllist()
     {
         $categories = category::has('post')->get();
-        $posts = post::paginate(15);
+        $posts = post::paginate(5);
+        $author = $posts->random()->autor;
 
         $menu = [];
         foreach ($categories as $category){
@@ -22,7 +23,7 @@ class PostController extends Controller
                         );
            array_push($menu, $item);
         }
-        return view('list', compact('posts', 'menu'));
+        return view('welcome', compact('posts', 'menu', 'author'));
     }
 
     public function listCategory($slag){
@@ -38,14 +39,38 @@ class PostController extends Controller
             array_push($menu, $item);
         }
         $id = category::where('slag', $slag)->firstOrFail();
-        $posts = post::where('category_id', $id->id)->paginate(15);
-        return view('list', compact('posts', 'menu'));
+        $posts = post::where('category_id', $id->id)->paginate(5);
+        $author = $posts->random()->autor;
+        return view('welcome', compact('posts', 'menu', 'author'));
 
     }
 
     public function post($slag){
+        $categories = category::has('post')->get();
+        $menu = [];
+        foreach ($categories as $category){
+            $count = post::where('category_id', $category->id)->count();
+            $item = array( 'name'=>$category->name,
+                'slag'=>$category->slag,
+                'count'=>$count
+            );
+            array_push($menu, $item);
+        }
+
         $post = post::where('slag', $slag)->firstOrFail();
-        return view('post',  compact('post'));
+        $author = $post->autor;
+        $allPosts = post::where('autor_id', $post->autor_id);
+        $otherPosts = $allPosts->where('id', '!=', $post->id)->get()->random(3);
+        $prevNext = $allPosts->orderBy('id', 'ASC')->paginate(2);
+        $travel = [
+            'prev'=>$prevNext[0]['slag'],
+            'next'=>$prevNext[1]['slag']
+        ];
+
+
+
+
+        return view('post',  compact('post', 'menu', 'author', 'otherPosts', 'travel'));
     }
 
 

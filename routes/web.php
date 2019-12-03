@@ -10,14 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
 
+*/
 
 
-Route::get('list', 'PostController@alllist')->name('routAll');
+
+Route::get('/', 'PostController@alllist')->name('routAll');
 
 Route::get('/post/{slag}', 'PostController@post')->name('routPost');
 
