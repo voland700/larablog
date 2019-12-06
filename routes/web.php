@@ -24,3 +24,9 @@ Route::get('/', 'PostController@alllist')->name('routAll');
 Route::get('/post/{slag}', 'PostController@post')->name('routPost');
 
 Route::get('/list/{slag}', 'PostController@listCategory')->name('routChocs');
+
+Route::get('/author/{slug}', 'PostController@authorPosts')->name('routAuthor');
+
+Route::get('search', 'PostController@search')->name('routSearch');
+
+

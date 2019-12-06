@@ -1,16 +1,9 @@
 @extends('layouts.app')
-
 @section('content')
     @foreach ($posts as $post)
-
-
-
-
-
     <article class="blog-post mb-40">
         <div class="blog-thumb">
-            <a href="/post/{{ $post->slag }}"><img src="/images/{{ $post->img }}" alt="{{ $post->name }}">
-            </a>
+            <a href="/post/{{ $post->slag }}"><img src="/images/{{ $post->img }}" alt="{{ $post->name }}"></a>
         </div>
         <div class="blog-content">
             <h2 class="post-title"><a href="/post/{{ $post->slag }}">{{ $post->name }}</a></h2>
@@ -26,12 +19,5 @@
         </div>
     </article>
     @endforeach
-
     {{ $posts->links() }}
 @endsection
-
-
-
-
-
-

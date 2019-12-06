@@ -1,10 +1,20 @@
+@php
+if(!$meta){
+    $meta = [
+    'title' => "Блоги самых интресных и ситаемых авторо рунета, информация обо всем на сете",
+    'keys' => "блог, статья, россия, украина, политика, путешенствия, читать, новости, обсуждения",
+    'description' => "Статьи, заметки, самых интресных авторов рунета на сайте. Обсуждение новостей и событий происходящих в России, соседних странах и во Всем мире "
+    ];
+}
+@endphp
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="ru">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Hmend - THEMELOCK.COM - Home Maintenance, Repair Service HTML Template</title>
-    <meta name="description" content="">
+    <title>{{$meta['title']}}</title>
+    <meta name="description" content="{{$meta['description']}}">
+    <meta name="keywords" content="{{$meta['keys']}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -67,7 +77,7 @@
             <div class="row">
                 <div class="col-md-2 col-sm-4">
                     <div class="logo">
-                        <a href="index.html"><img src="/assets/img/logo/1.png" alt="" /></a>
+                        <a href="{{route('routAll')}}"><img src="/assets/img/logo/1.png" alt="" /></a>
                     </div>
                 </div>
                 <div class="col-md-7 col-sm-8">
@@ -160,55 +170,34 @@
                 @show
 
                 <div class="widget mb-60">
-                    <h6 class="widget-title">Search</h6>
-                    <form class="search-form">
-                        <input placeholder="Search keyword" type="text">
+                    <h6 class="widget-title">Поиск по сайту</h6>
+                    <form action="{{route('routSearch')}}" method="GET"class="search-form">
+                        <input type="text" name="q" value="{{ old('q') }}" placeholder="Ввидите текст" required>
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
+
+
+                @section('bestPosts')
+                    @if(isset($bestPosts))
                 <div class="widget mb-60">
-                    <h6 class="widget-title">Recent Posts</h6>
+                    <h6 class="widget-title">Избранные публикации</h6>
                     <ul class="recent-posts">
-                        <li>
-                            <div class="widget-posts-image">
-                                <a href="#"><img src="/assets/img/blog/111.jpg" alt=""></a>
-                            </div>
-                            <div class="widget-posts-body">
-                                <div class="widget-posts-meta">February  13,  2018</div>
-                                <h6 class="widget-posts-title"><a href="#">Diffrent title gose here. Thisisdemo title.</a></h6>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="widget-posts-image">
-                                <a href="#"><img src="/assets/img/blog/112.jpg" alt=""></a>
-                            </div>
-                            <div class="widget-posts-body">
-                                <div class="widget-posts-meta">February  13,  2018</div>
-                                <h6 class="widget-posts-title"><a href="#">Diffrent title gose here. Thisisdemo title.</a></h6>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="widget-posts-image">
-                                <a href="#"><img src="/assets/img/blog/113.jpg" alt=""></a>
-                            </div>
-                            <div class="widget-posts-body">
-                                <div class="widget-posts-meta">February  13,  2018</div>
-                                <h6 class="widget-posts-title"><a href="#">Diffrent title gose here. Thisisdemo title.</a></h6>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="widget-posts-image">
-                                <a href="#"><img src="/assets/img/blog/114.jpg" alt=""></a>
-                            </div>
-                            <div class="widget-posts-body">
-                                <div class="widget-posts-meta">February  13,  2018</div>
-                                <h6 class="widget-posts-title"><a href="#">Diffrent title gose here. Thisisdemo title.</a></h6>
-                            </div>
-                        </li>
+                    @foreach($bestPosts as $item)
+                            <li>
+                                <div class="widget-posts-image">
+                                    <a href="/post/{{ $item->slag }}"><img src="/images/{{ $item->img }}" class="best-img" alt="{{ $item->name }}"></a>
+                                </div>
+                                <div class="widget-posts-body">
+                                    <div class="widget-posts-meta">{{ date('m.d.y', strtotime($item->created_at)) }}</div>
+                                    <h6 class="widget-posts-title"><a href="/post/{{ $item->slag }}">{{ $item->name }}</a></h6>
+                                </div>
+                            </li>
+                    @endforeach
                     </ul>
                 </div>
-
-
+                    @endif
+                @show
 
                 @section('menu')
                     @if(isset($menu))
