@@ -30,3 +30,13 @@ Route::get('/author/{slug}', 'PostController@authorPosts')->name('routAuthor');
 Route::get('search', 'PostController@search')->name('routSearch');
 
 
+
+Auth::routes();
+
+Route::get('/admin', 'HomeController@index')->name('admin');
+
+
+Route::middleware('auth')->namespace('Admin')->prefix('/admin')->group(function(){
+    Route::get('/list', 'AdminController@list')->name('adminlist');
+    });
+
