@@ -178,6 +178,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Barryvdh\Elfinder\ElfinderServiceProvider::class
 
     ],
 
@@ -231,6 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Debugbar' => 'Barryvdh\Debugbar\Facade',
+
         //'Form'     => 'Illuminate\Html\FormFacade',
         //'Html'     => 'Illuminate\Html\HtmlFacade',
 

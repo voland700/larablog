@@ -19,8 +19,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
-    <link rel="stylesheet" href="assets/admin/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="assets/admin/css/style.css">
+    <link rel="stylesheet" href="/assets/admin/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="/assets/admin/css/style.css">
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
     <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
@@ -72,15 +72,15 @@
     <nav class="navbar navbar-expand-sm navbar-default">
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="index.html"><i class="menu-icon fa fa-laptop"></i>Категории</a>
+                <li class="{{ request()->routeIs('admincategorieslist') ? 'active' : '' }}">
+                    <a href="{{route('admincategorieslist')}}"><i class="menu-icon fa fa-laptop"></i>Категории</a>
                 </li>
-                <li>
-                    <a href="#"> <i class="menu-icon fa fa-user"></i>Авторы</a>
+                <li class="{{ request()->routeIs('adminauthorslist') ? 'active' : '' }}">
+                    <a href="{{route('adminauthorslist')}}"> <i class="menu-icon fa fa-user"></i>Авторы</a>
                 </li>
-                <li>
-                    <a href="#"> <i class="menu-icon fa fa-book"></i>Публикации</a>
-                  </li>
+                <li class="{{ request()->routeIs('adminlist') ? 'active' : '' }}">
+                    <a href="{{route('adminlist')}}"> <i class="menu-icon fa fa-book"></i>Публикации</a>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
@@ -185,7 +185,12 @@
 
 <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
-<script src="assets/admin/js/init/fullcalendar-init.js"></script>
+<script src="/assets/admin/js/init/fullcalendar-init.js"></script>
+
+
+
+
+
 
 <!--Local Stuff-->
 <script>

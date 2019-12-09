@@ -10,12 +10,12 @@
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * Tags: html, themplate, Ela Admin
 --------------------------------------------------------- */
-/* 
+/*
 
 
 Googel Fonts  */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
-/* Googel Fonts End  
+/* Googel Fonts End
 
 */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
@@ -133,11 +133,11 @@ Googel Fonts  */
 .mb-15 {
   margin-bottom: 15px; }
 
-/* 
+/*
 
 
 Googel Fonts  */
-/* Googel Fonts End  
+/* Googel Fonts End
 
 */
 .bg-flat-color-1 {
@@ -1455,7 +1455,7 @@ header .form-inline {
     .table-stats table th img,
     .table-stats table td img {
       margin-right: 10px;
-      max-width: 45px; }
+      max-width: 90px; }
     .table-stats table th .name,
     .table-stats table td .name {
       color: #343a40;
@@ -1493,7 +1493,7 @@ header .form-inline {
     padding-bottom: 15px; }
   .timeline li img {
     margin: 10px 5px 15px 0;
-    max-height: 40px; }
+    max-height: 50px; }
 .timeline .media-body {
   border-bottom: 1px solid #e8e9ef; }
 
@@ -2502,5 +2502,11 @@ footer.site-footer {
   #cellPaiChart #pieLabel0 {
     left: inherit !important;
     right: 20px !important; }
+
+
+.form-actions {
+    text-align: right;
+}
+
 
 /*# sourceMappingURL=style.css.map */

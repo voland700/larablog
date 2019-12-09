@@ -38,5 +38,17 @@ Route::get('/admin', 'HomeController@index')->name('admin');
 
 Route::middleware('auth')->namespace('Admin')->prefix('/admin')->group(function(){
     Route::get('/list', 'AdminController@list')->name('adminlist');
+    Route::get('/postnew', 'AdminController@postnew')->name('adminpostnew');
+
+    Route::get('/authorslist', 'AdminController@authorslist')->name('adminauthorslist');
+    Route::get('/authornew', 'AdminController@authornew')->name('adminauthornew');
+
+
+    Route::get('/categorieslist', 'AdminController@categorieslist')->name('admincategorieslist');
+    Route::get('/categorynew', 'AdminController@categorynew')->name('admincategorynew');
+
+
+
     });
+
 

@@ -6,6 +6,9 @@
 
     <div class="col-lg-12">
         <div class="card">
+            <div class="card-body">
+                <a href="{{route('adminpostnew')}}" type="button" class="btn btn-primary"><i class="fa fa-star"></i>&nbsp; Создать пост</a>
+            </div>
             <div class="card-header"> <strong class="card-title">Список публикаций</strong> </div>
             <div class="table-stats order-table ov-h">
                 <table class="table ">
@@ -18,27 +21,34 @@
                         <th>Избранное</th>
                         <th>Категория</th>
                         <th>Автор</th>
-                        <th>Поробнее</th>
                         <th>Редактировать</th>
                         <th>Удалить</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1.</td>
-                        <td><a href="#">О ноотропах и об их будущем</a></td>
-                        <td><img src="#" alt="img"></td>
-                        <td><span>Да</span></td>
-                        <td><span>Наука</span></td>
-                        <td><span>Лена Миро</span></td>
-                        <td><button type="button" class="btn btn-primary"><i class="fa fa-star"></i>&nbsp; Primary</button></td>
-                        <td><button type="button" class="btn btn-danger btn-lg">Danger</button></td>
-                    </tr>
 
+                    @if($posts)
+                    @foreach ($posts as $post)
+                    <tr>
+                        <td>{{$post->id}}.</td>
+                        <td><a href="/post/{{$post->slag}}" target="_blank">{{$post->name}}</a></td>
+                        <td><img src="/images/{{$post->img}}" alt="img" width="200"></td>
+                        <td><span>{{$post->active==1 ? 'Да' : 'Нет'}}</span></td>
+                        <td><span>{{$post->choice==0 ? 'Нет' : 'Да'}}</span></td>
+                        <td><span>{{$post->category->name}}</span></td>
+                        <td><span>{{$post->autor->author_name }}</span></td>
+                        <td><button type="button" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Изменить</button></td>
+                        <td><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i>&nbsp;Удалить</button></td>
+                    </tr>
+                    @endforeach
+                   @endif
                     </tbody>
                 </table>
             </div>
         </div>
+
+        {{ $posts->links() }}
+
 
 
 

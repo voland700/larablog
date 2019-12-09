@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="larablog@localhost">
-  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.15">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.16">
     <root id="1">
       <ServerVersion>5.6.41</ServerVersion>
       <DefaultEngine>InnoDB</DefaultEngine>
@@ -12,12 +12,10 @@
     </schema>
     <schema id="3" parent="1" name="information_schema">
       <Collation>utf8_general_ci</Collation>
-      <Substituted>1</Substituted>
     </schema>
     <schema id="4" parent="1" name="larablog">
       <Current>1</Current>
       <Collation>utf8_general_ci</Collation>
-      <Visible>1</Visible>
     </schema>
     <schema id="5" parent="1" name="laravel.admin.panel">
       <Collation>utf8_general_ci</Collation>
